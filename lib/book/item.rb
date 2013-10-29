@@ -1,7 +1,7 @@
 module GoogleBooks
 
   class Item
-    attr_reader :kind, :id, :title, :titles_array, :authors, :authors_array, :publisher, :published_date, :description, :isbn, :isbn_10, :isbn_13, :other_identifier, :page_count, :print_type, :categories, :average_rating, :ratings_count, :language, :preview_link, :info_link, :sale_info
+    attr_reader :kind, :id, :title,:subtitle, :language, :country, :titles_array, :authors, :authors_array, :publisher, :published_date, :description, :isbn, :isbn_10, :isbn_13, :other_identifier, :page_count, :print_type, :categories, :average_rating, :ratings_count, :language, :preview_link, :info_link, :sale_info
 
     def initialize(item)
       @item = item
@@ -22,13 +22,16 @@ module GoogleBooks
     def retrieve_attribute
       @kind = @item['kind']
       @id = @item['id']
-      @title = build_title
+      @title =  @volume_info['title']
+      @subtitle =  @volume_info['subtitle']
       @titles_array = [@volume_info['title'], @volume_info['subtitle']].compact
       @authors = [@volume_info['authors']].flatten.join(', ')
       @authors_array = [@volume_info['authors']].flatten
       @publisher = @volume_info['publisher']
       @published_date = @volume_info['publishedDate']
       @description = @volume_info['description']
+      @country = @volume_info['country']
+      @language = @volume_info['language']
 
       retrieve_industry_identifiers
 
