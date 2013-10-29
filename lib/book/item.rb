@@ -31,7 +31,7 @@ module GoogleBooks
       @published_date = @volume_info['publishedDate']
       @description = @volume_info['description']
       @country = @volume_info['country']
-      @language = @volume_info['language']
+       
 
       retrieve_industry_identifiers
 
