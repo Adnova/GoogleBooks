@@ -30,14 +30,15 @@ module GoogleBooks
       @publisher = @volume_info['publisher']
       @published_date = @volume_info['publishedDate']
       @description = @volume_info['description']
-      @country = @volume_info['country']
+      @country =  @item['saleInfo']['country']
        
 
       retrieve_industry_identifiers
 
       @page_count = @volume_info['pageCount']
       @print_type = @volume_info['printType']
-      @categories = [@volume_info['categories']].flatten.join(', ')
+      @category = @volume_info['mainCategory']
+      @subcategory = @volume_info['categories'].first
       @average_rating = @volume_info['averageRating']
       @ratings_count = @volume_info['ratingsCount']
       @language = @volume_info['language']
