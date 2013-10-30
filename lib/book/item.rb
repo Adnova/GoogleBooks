@@ -38,7 +38,7 @@ module GoogleBooks
       @page_count = @volume_info['pageCount']
       @print_type = @volume_info['printType']
       @category = @volume_info['mainCategory']
-      @subcategory = @volume_info['categories'].first
+      @subcategory = @volume_info['categories'] 
       @average_rating = @volume_info['averageRating']
       @ratings_count = @volume_info['ratingsCount']
       @language = @volume_info['language']
