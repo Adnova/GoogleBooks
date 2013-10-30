@@ -1,7 +1,7 @@
 module GoogleBooks
 
   class Item
-    attr_reader :kind, :id, :title,:subtitle, :language, :country, :titles_array, :authors, :authors_array, :publisher, :published_date, :description, :isbn, :isbn_10, :isbn_13, :other_identifier, :page_count, :print_type, :categories, :average_rating, :ratings_count, :language, :preview_link, :info_link, :sale_info
+    attr_reader :kind, :id, :title,:subtitle, :language, :country, :titles_array, :authors, :authors_array, :publisher, :published_date, :description, :isbn, :isbn_10, :isbn_13, :other_identifier, :page_count, :print_type, :category, :subcategory, :average_rating, :ratings_count, :language, :preview_link, :info_link, :sale_info
 
     def initialize(item)
       @item = item
