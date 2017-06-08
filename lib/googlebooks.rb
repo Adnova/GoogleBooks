@@ -38,6 +38,7 @@ module GoogleBooks
       parameters['orderBy'] = 'newest' if options[:order_by].eql?('newest')
       parameters['country'] = options[:country]
       parameters['langRestrict'] = options[:lang]
+      parameters['maxAllowedMaturityRating'] = options[:allow_mature] ? 'mature' : 'not-mature'
       Response.new(get(url.to_s))
     end
 
