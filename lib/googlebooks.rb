@@ -42,20 +42,18 @@ module GoogleBooks
       Response.new(get(url.to_s))
     end
 
-    private
-
-    def query
-      parameters.
-        map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.
-        join('&')
+    def find(id, remote_ip = nil)
+      (headers 'X-Forwarded-For' => remote_ip.to_s) unless remote_ip.nil?
+      Response.new(get(url(id).to_s))
     end
+    private
 
     # Queries the new Google API. The former Google Book Search API is deprecated
     # http://code.google.com/apis/books/docs/gdata/developers_guide_protocol.html
-    def url
-      URI::HTTPS.build(:host  => 'www.googleapis.com',
-                      :path  => '/books/v1/volumes',
-                      :query => query)
+    def url(segment = nil)
+      URI::HTTPS.build(:host  => "www.googleapis.com",
+                       :path  => File.join(*["/books/v1/volumes", segment].compact),
+                       :query => parameters.try(:to_query))
     end
   end
 end
